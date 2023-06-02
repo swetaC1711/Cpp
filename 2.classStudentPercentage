@@ -1,0 +1,25 @@
+#include<iostream>
+using namespace std;
+class Student{
+    int s1,s2,s3;
+    float count=0,sum;
+    public:
+        void accept(){
+            cout<<"Enter marks of five subject: ";
+            for(int i=1;i<=5;i++){
+                cin>>sum;
+                count+=sum;
+            }
+        }
+        void percentage(){
+            cout<<"Percentage of student is: "<<count*100/500<<"%";
+        }
+        
+};
+int main(){
+    for(int i=1;i<=3;i++){
+    Student s1;
+    s1.accept();
+    s1.percentage();
+    }
+}
