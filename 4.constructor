@@ -1,0 +1,67 @@
+#include <iostream>
+#include <vector>
+
+class Student {
+public:
+    int RollNumber;
+    std::string Name;
+    int Age;
+    int* Marks;
+    int NumMarks;
+
+    static std::vector<Student*> allStudents;
+
+    // Static constructor
+    static Student* CreateStudent(int rollNumber, std::string name, int age, int* marks, int numMarks) {
+        Student* student = new Student();
+        student->RollNumber = rollNumber;
+        student->Name = name;
+        student->Age = age;
+        student->Marks = new int[numMarks];
+        std::copy(marks, marks + numMarks, student->Marks);
+        student->NumMarks = numMarks;
+
+        allStudents.push_back(student);
+
+        return student;
+    }
+
+    static void PrintAllStudents() {
+        for (const auto& student : allStudents) {
+            std::cout << "Roll Number: " << student->RollNumber << ", Name: " << student->Name << ", Age: " << student->Age << std::endl;
+            std::cout << "Marks: ";
+            for (int i = 0; i < student->NumMarks; ++i) {
+                std::cout << student->Marks[i] << " ";
+            }
+            std::cout << std::endl;
+
+            double totalMarks = 0;
+            for (int i = 0; i < student->NumMarks; ++i) {
+                totalMarks += student->Marks[i];
+            }
+
+            double percentage = totalMarks / student->NumMarks;
+            std::cout << "Percentage: " << percentage << "%" << std::endl;
+        }
+    }
+};
+
+std::vector<Student*> Student::allStudents;
+
+int main() {
+    int marks1[] = { 90, 85, 95 };
+    Student* student1 = Student::CreateStudent(1, "John Doe", 20, marks1, 3);
+
+    int marks2[] = { 80, 75, 70 };
+    Student* student2 = Student::CreateStudent(2, "Jane Smith", 21, marks2, 3);
+
+    Student::PrintAllStudents();
+
+    // Cleanup: Delete dynamically allocated memory
+    for (const auto& student : Student::allStudents) {
+        delete[] student->Marks;
+        delete student;
+    }
+
+    return 0;
+}
