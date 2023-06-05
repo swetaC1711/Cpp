@@ -1,0 +1,79 @@
+/*sharpen your pencil:
+
+Data abstraction
+  1.real part(int)
+  2.imaginary part(int)
+Procedural abstraction:
+  1.default  constructor
+  2.Parameterized constructor having two integer parameter
+  3.getreal(),getImaginary(){i.e Accesor or selector functions}
+  4.setreal(),setImaginary(){i.e mutator or modifier functions}
+  5.display(){i.e facilitator function}*/
+  
+#include <iostream>
+using namespace std;
+
+class ComplexNumber {
+private:
+    int real;
+    int imaginary;
+
+public:
+    // Default constructor
+    ComplexNumber() {
+        real = 0;
+        imaginary = 0;
+    }
+
+    // Parameterized constructor
+    ComplexNumber(int realValue, int imaginaryValue) {
+        real = realValue;
+        imaginary = imaginaryValue;
+    }
+
+    // Accessor functions
+    int getReal() {
+        return real;
+    }
+
+    int getImaginary() {
+        return imaginary;
+    }
+
+    // Mutator functions
+    void setReal(int realValue) {
+        real = realValue;
+    }
+
+    void setImaginary(int imaginaryValue) {
+        imaginary = imaginaryValue;
+    }
+
+    // Facilitator function
+    void display() {
+        std::cout << "Complex Number: " << real << " + " << imaginary << "i" << std::endl;
+    }
+};
+
+int main() {
+    // Creating an object using default constructor
+    ComplexNumber complex1;
+    complex1.display(); // Output: Complex Number: 0 + 0i
+
+    // Creating an object using parameterized constructor
+    ComplexNumber complex2(3, 4);
+    complex2.display(); // Output: Complex Number: 3 + 4i
+
+    // Using accessor functions
+    int realValue = complex2.getReal();
+    int imaginaryValue = complex2.getImaginary();
+    std::cout << "Real part: " << realValue << std::endl; // Output: Real part: 3
+    std::cout << "Imaginary part: " << imaginaryValue << std::endl; // Output: Imaginary part: 4
+
+    // Using mutator functions
+    complex2.setReal(5);
+    complex2.setImaginary(-2);
+    complex2.display(); // Output: Complex Number: 5 + -2i
+
+    return 0;
+}
