@@ -1,0 +1,26 @@
+#include <iostream>
+
+// Function Overloading for integer sum
+int sum(int a, int b) {
+    return a + b;
+}
+
+// Function Overloading for float sum
+float sum(float a, float b) {
+    return a + b;
+}
+
+int main() {
+    int num1 = 5, num2 = 3;
+    float floatNum1 = 2.5f, floatNum2 = 1.3f;
+
+    // Calling integer sum
+    int resultInt = sum(num1, num2);
+    std::cout << "Sum of integers: " << resultInt << std::endl;
+
+    // Calling float sum
+    float resultFloat = sum(floatNum1, floatNum2);
+    std::cout << "Sum of floats: " << resultFloat << std::endl;
+
+    return 0;
+}
