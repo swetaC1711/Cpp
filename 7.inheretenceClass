@@ -9,7 +9,7 @@ public:
   float salary;
   employee(){
     id=1;
-    name="priya";
+    name="Priya";
     salary=50000;
   }
   employee(int i,string n,float s){
@@ -27,21 +27,21 @@ public:
     cin>>salary;
   }
   void display(){
-    cout<<"Employee Id:"<<id;
-    cout<<"Name:"<<name;
-    cout<<"Salary amt:"<<salary;
+    cout<<"Employee Id:"<<id<<endl;
+    cout<<"Name:"<<name<<endl;
+    cout<<"Salary amt:"<<salary<<endl;
     }
 
 };
-class salesperson:public employee{
+class salesperson:public employee{//IS-A Relation
 public:
 int sales;
-int comm;
-  salesperson(){
+int comm;//commision
+  salesperson(){//no argument constructor
     sales=32221;
     comm=999;
   }
-  salesperson(int sal,int commision){
+  salesperson(int sal,int commision){//parameterized constructor
     sales=sal;
     comm=commision;
   }
@@ -55,39 +55,40 @@ int comm;
   void display(){
     employee::display();
 
-    cout<<"Employee Sales:"<<sales;
-    cout<<"Employee commission:"<<comm;
+    cout<<"Employee Sales:"<<sales<<endl;
+    cout<<"Employee commission:"<<comm<<endl;
     }
 };
-class Manager:public employee{
-public:
-int project;
-int status;
-  Manager(){
+class salesmanager:public salesperson{
+  public:
+  int project;
+  string status;
+  salesmanager(){
     project=22;
-    status=1;
+    status="completed";
   }
-  Manager(int proj,int stat){
+  salesmanager(int proj,string stat){
     project=proj;
     status=stat;
   }
   void accept(){
-    employee::accept();
-    cout<<"enter the sales:";
+    salesperson::accept();
+    cout<<"enter project no.";
     cin>>project;
-    cout<<"enter the commssion";
+    cout<<"enter status:";
     cin>>status;
   }
   void display(){
-    employee::display();
-    cout<<"Employee project:"<<project;
-    cout<<"Employee project status:"<<status;
-    }
+    salesperson::display();
+    cout<<"project :"<<project<<endl;
+    cout<<"project status is:"<<status<<endl;
+  }
 };
 int main()
 {
   //employee e1;
   //e1.display();
-  Manager s1;
+  salesmanager s1;
   s1.display();
+
 }
