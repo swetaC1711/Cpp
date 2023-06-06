@@ -1,0 +1,93 @@
+#include<iostream>
+using namespace std;
+
+class employee
+{
+public:
+  int id;
+  string name;
+  float salary;
+  employee(){
+    id=1;
+    name="priya";
+    salary=50000;
+  }
+  employee(int i,string n,float s){
+    id=i;
+    name=n;
+    salary=s;
+  }
+  void accept(){
+    employee::accept();
+    cout<<"enter the Id name:";
+    cin>>id;
+    cout<<"enter the name:";
+    cin>>name;
+    cout<<"enter the salary amount:";
+    cin>>salary;
+  }
+  void display(){
+    cout<<"Employee Id:"<<id;
+    cout<<"Name:"<<name;
+    cout<<"Salary amt:"<<salary;
+    }
+
+};
+class salesperson:public employee{
+public:
+int sales;
+int comm;
+  salesperson(){
+    sales=32221;
+    comm=999;
+  }
+  salesperson(int sal,int commision){
+    sales=sal;
+    comm=commision;
+  }
+  void accept(){
+    employee::accept();
+    cout<<"enter the sales:";
+    cin>>sales;
+    cout<<"enter the commission";
+    cin>>comm;
+  }
+  void display(){
+    employee::display();
+
+    cout<<"Employee Sales:"<<sales;
+    cout<<"Employee commission:"<<comm;
+    }
+};
+class Manager:public employee{
+public:
+int project;
+int status;
+  Manager(){
+    project=22;
+    status=1;
+  }
+  Manager(int proj,int stat){
+    project=proj;
+    status=stat;
+  }
+  void accept(){
+    employee::accept();
+    cout<<"enter the sales:";
+    cin>>project;
+    cout<<"enter the commssion";
+    cin>>status;
+  }
+  void display(){
+    employee::display();
+    cout<<"Employee project:"<<project;
+    cout<<"Employee project status:"<<status;
+    }
+};
+int main()
+{
+  //employee e1;
+  //e1.display();
+  Manager s1;
+  s1.display();
+}
