@@ -1,0 +1,38 @@
+/*Handling files-character based functions
+---A pair of function puts(), gets() used to access the file charachter by charachter 
+             -get(char)-read charachter.
+             -put(char)-write charachter.*/
+            
+            
+#include <fstream>
+#include <iostream>
+using namespace std;
+int main(){
+    ofstream outfile("result1");
+    if(outfile.fail())//or if(!openfile)
+    {
+        cout<<"file can't open";
+        exit(1);
+    }
+    //to write information on file
+    outfile << "Alphabets from (A-Z) are:\n";
+   
+    // ASCII value of A=65 and Z=90
+    for (int i = 65; i <= 90; i++) {
+        // Integer i with %c will be converted to character
+        // before printing.%c will takes its equivalent
+        // character value
+        outfile<< (char)i << " ";
+    }
+ 
+     outfile<< "\nAlphabets from (a-z) are:\n";
+ 
+    // ASCII value of a=97 and z=122
+    for (int i = 97; i <= 122; i++) {
+        // Integer i with %c will be converted to character
+        // before printing.%c will takes its equivalent
+        // character value
+        outfile << (char)i << " ";
+    }
+    return 0;
+}
