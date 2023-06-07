@@ -1,0 +1,23 @@
+//Exceptions:- the error that can occur during the execution of program are called run-time error
+//Error_handling:-through if-else and switch case construct
+//try block and catch block
+#include <iostream>
+using namespace std;
+float divide(int n,int d){
+    try{
+        if(d==0){
+            throw d;
+            return (float)n/d;
+        }
+    }
+    catch(int err){
+        cout<<"Exception :divide by zero error";
+        exit(1);
+    }
+}
+int main(){
+    int n,d;
+    cin>>n;
+    cin>>d;
+    divide(n,d);
+}
