@@ -1,0 +1,46 @@
+/*in cpp we use iostream standard library
+to read and write from file we are using the cpp called "fstream"
+data type      Description
+fstream        it is used to create a file,write in file, read file
+ifstream       it is used to read from files
+ofstream        it is used to create and write to file
+
+opening file:
+
+using constructor function of class
+         ofstream outfile
+using function open()
+         outfile.open("result");
+       
+ Using open() to open a file:
+ void ifstream::open(char * filename,mode=ios::in);
+ void ofstream::open(char * filename,mode=ios::out|ios::trunc);
+ void fstream::open(char * filename,mode=ios::in|ios::out);
+*/
+
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main()
+{
+    ofstream outfile("result");//openfile
+    if(outfile.fail())//or if(!openfile)
+    {
+        cout<<"file can't open";
+        exit(1);
+    }
+    //to write information on file
+    outfile<<"hello";
+    
+    outfile.close();
+    //to read the file information on consol 
+    char str[20];
+    ifstream infile("result");
+    infile>>str;
+    cout<<str;
+    infile.close();
+    
+
+    return 0;
+}
